@@ -1,7 +1,23 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+
+		nav.navbar.navbar-default
+			.navbar-header
+				a.navbar-brand(href='/') BY30
+			ul.nav.navbar-nav.pull-right
+				li: a(href='#') What's up
+				li: a(href='#') About us
+				li: a(href='#') When and where
+				li: a(href='#') Contact
+
+		block content
+
+	script(src='/javascripts/jquery.js')
+	script(src='/javascripts/bootstrap.js')
+	script(src='/javascripts/arctext.js')
+	script(src='/javascripts/init.js')
