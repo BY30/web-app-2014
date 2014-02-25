@@ -1,8 +1,30 @@
 extends layout
 
-block content
-	.centre
-		.logo
-		h2.title-line 3 influential speakers | 
-			span.name Jeremy Till
-			|  | 30 minutes each
+block content	
+	section.page.home(href='#home')
+		.nav-wrapper
+		nav.navbar.navbar-default(role='navigation')
+					ul.nav.navbar-nav.pull-left
+						li: a(href='#about'): span About
+						li: a(href='#speakers'): span Speakers
+					ul.nav.navbar-nav.pull-right
+						li: a(href='#venue'): span Venue
+						li: a(href='#contact'): span Contact
+					.navbar-header.centre
+						a.navbar-brand(href='/')
+		.title-top
+			h1 IDEAS WORTH SHARING
+			h1 PEOPLE WORTH KNOWING
+		.title-bottom
+			span.big-number THREE
+			span.medium-text influential speakers
+			span.big-number.gray THIRTY
+			span.medium-text.gray minutes each
+	section.page.about(href='#about')
+		h1 What's all this about?
+		p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
