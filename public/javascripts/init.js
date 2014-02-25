@@ -1,10 +1,7 @@
-var initialize = function () {
-	$('.title-line').arctext({
-		radius: 230,
-		dir: -1
-	});
-};
-
-$(document).ready(function() {
-	//initialize();
+$('a span').click(function(){
+	console.log($(this).parent()[0]);
+    $('html, body').animate({
+        scrollTop: $( $.attr($(this).parent()[0], 'href') ).offset().top
+    }, 300);
+    return false;
 });
