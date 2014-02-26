@@ -21,13 +21,14 @@ body {
 	background: #111;
 	opacity: .3;
 	z-index: 100;
+	-webkit-transition-duration: 1s;
 }
 
 nav {
 	position: absolute;
 	display: inline-block;
 	top: 0px;
-	left: calc(50% - 646px)	;
+	left: calc(50% - 646px);
 	width: 1292px;
 	margin: 0 auto;
 	z-index: 101;
@@ -36,6 +37,7 @@ nav {
 	background: transparent !important;
 	border-radius: 0px !important;
 	border: none !important;
+	-webkit-transition-duration: 1s;
 }
 
 .centre {
@@ -95,20 +97,33 @@ nav {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	height: 700px;
+	margin: 0px;
 }
 
 .about {
+	margin: 0px;
 	background: #F5EBE1;
 	padding: 50px 80px;
 	font-size: 30px;
 }
 
-.about h1 {
+.speakers {
+	margin: 0px;
+	background: #3E0111;
+	padding: 50px 80px;
+	font-size: 30px;
+	color: #eee;
+}
+
+.page h1 {
 	font-family: "Helvetica Special";
 	font-size: 80px;
 }
 
 .title-top {
+	position: absolute;
+	top: 160px;
+	left: 590px;
 	text-align: right;
 	padding-right: 120px;
 	color: #F5EBE1;
