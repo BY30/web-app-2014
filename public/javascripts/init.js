@@ -1,8 +1,8 @@
-$('a span').click(function(){
-	console.log($.attr($(this).parent()[0], 'href'));
+$('nav ul li a, nav ul li span').click(function(e){
     $('html, body').animate({
-        scrollTop: $($.attr($(this).parent()[0], 'href')).offset().top - 100
+        scrollTop: $($.attr(this, 'href')).offset().top - 100
     }, 300);
+    e.preventDefault();
     return false;
 });
 
