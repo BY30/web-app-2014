@@ -176,6 +176,7 @@ nav {
 	height: 200px;
 	background-position: center;
 	border-radius: 200px;
+	border: 5px solid #fff;
 }
 
 .column {
