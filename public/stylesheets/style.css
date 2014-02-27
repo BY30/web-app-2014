@@ -121,7 +121,7 @@ nav {
 
 .speakers {
 	margin: 0px;
-	background: #FFDEC1;
+	background: #FEEFFF;
 }
 
 .speakers .content {
@@ -145,26 +145,32 @@ nav {
 }
 
 .session {
-	height: 230px;
+	display: inline-block;
 	width: 100%;
-	margin-bottom: 30px;
+	margin-bottom: 80px;
 }
 
 .session *{
 	font-family: "Helvetica Special";
 }
 
-.session p {
+.session-date {
 	font-family: "Helvetica Special";
-	position: relative;
+	display: table;
+	margin: 20px auto 40px auto;
 	font-weight: bold;
-	font-size: 30px;
-	top: 50%;
-	margin: 0px;
-	padding: 0px;
-	margin-top: -20px;
+	color: #000;
+	opacity: .2;
+	font-size: 40px;
+	/*text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;*/
+}
+
+.session-date:before, .session-date:after {
+	content: "";
+	display: block;
+	height: 5px;
 	width: 100%;
-	line-height: 40px;
+	border-bottom: 5px solid #ccc;
 }
 
 .tile, img, .cover {
