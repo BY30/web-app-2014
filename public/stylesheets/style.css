@@ -121,7 +121,7 @@ nav {
 
 .speakers {
 	margin: 0px;
-	background: #FFD7E1;
+	background: #FFEAEA;
 }
 
 .speakers .content {
@@ -145,7 +145,7 @@ nav {
 }
 
 .session {
-	height: 200px;
+	height: 230px;
 	width: 100%;
 	margin-bottom: 30px;
 }
@@ -164,7 +164,7 @@ nav {
 	line-height: 30px;
 }
 
-.tile {
+.tile, img, .cover {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -172,25 +172,71 @@ nav {
 	right: 0;
 	margin-right: auto;
 	margin-left: auto;
-	width: 200px;
-	height: 200px;
+	width: 230px;
+	height: 230px;
 	background-position: center;
-	border-radius: 200px;
+	border-radius: 250px;
 	border: 5px solid #fff;
+	background-color: transparent;
+	/*-webkit-transition-duration: .2s;*/
+}
+
+.tile {
+	z-index: 2;
+}
+
+img {
+	z-index: 1;
+}
+
+.cover {
+	z-index: 4;
+	cursor: pointer;
+}
+
+.description {
+	background-color: #fff;
+	width: 100%;
+	height: 0px;
+	-webkit-transition-duration: 1s;
+}
+
+.description-final {
+	height: 200px !important;
+	-webkit-transition-duration: 1s;
+}
+
+h1.tile-title {
+	position: relative;
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	top: 50%;
+	margin-top: -50px;
+	height: 100px;
+	display: none;
+	color: #fff;
+	font-weight: bold;
+	z-index: 3;
+	max-width: 130px;
+	margin-left: auto;
+	margin-right: auto;
+	word-wrap: normal;
+	/*-webkit-transition-duration: .2s;*/
+}
+
+.cover:hover ~ .tile {
+	background-color: #111;
+	opacity: .2;
+	/*-webkit-transition-duration: .2s;*/
+}
+
+.cover:hover + h1.tile-title {
+	display: block;
 }
 
 .column {
-	height: 200px;
-}
-
-#alexhaw {
-	background: url('../images/speakers/oct2013/alex_haw.jpg');
-	background-repeat: no-repeat;
-	background-size: 100%;
-	background-position: center;
-	height: 100%;
-	display: inline-block;
-	border-radius: 10000px;
+	height: 230px;
 }
 
 .big-text {
