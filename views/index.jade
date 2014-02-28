@@ -16,9 +16,6 @@ block content
 						a.navbar-brand(href='/')
 					.navbar-header.centre.menu
 						a.navbar-brand(href='#')
-		.title-top
-			h1 IDEAS WORTH SHARING
-			h1 PEOPLE WORTH KNOWING
 		.title-bottom
 			span.big-number THREE
 			span.medium-text influential speakers
@@ -83,8 +80,9 @@ block content
 	section.page.contact#contact
 		.content
 			h1.normal Contact Us
-			.container-fluid.inline-block
+			.container-fluid.inline-block.contact-panel
 				.col-md-6.contact-form
+					p If you would like to find out even more about BY30, have a general enquiry or simply want to say hi, feel free to get in touch using the form below
 					form
 						.form-group
 							input.form-control#name(type='text', name='name', placeholder='Your name')
@@ -93,17 +91,39 @@ block content
 						.form-group
 							textarea.form-control(name='message', placeholder='Your message')
 						button.btn.btn-success.send-button(type='button', name='send') Send
-				.col-md-6
+				.col-md-6.alternative-contact
+					p ...or you can visit us every Wednesday between 9:00 and 10:00 
+					address
+						strong Chatham Building
+						br
+						| Manchester Metropolitan University All Saints Campus
+						br
+						| M15 6LL, Manchester
+						br
+						| Greater Manchester, United Kingdom
+					p: strong General contact details:
+					address
+						a(href='mailto:by30@gmail.com') by30@gmail.com
+						br
+						a(href='http://mssa.msa.ac.uk') mssa.msa.ac.uk
 	section.page.footer
 		.content
 			.container-fluid.inline-block
-				.col-md-3.partners
+				.col-md-4.partners
 					h4 Partners
 					img.logo(src='images/logo/mssa.png')
 					img.logo(src='images/logo/msa.png')
-				.col-md-3.sponsors
+				.col-md-4.sponsors
 					h4 Sponsors
 					img.logo(src='images/logo/bdp.png')
-				.col-md-3
-				.col-md-3
-					h4 Copyright
+				.col-md-4
+					h4 Social
+					.fb-container
+						.fb-like.fb-like-button(data-href='https://www.facebook.com/beforeyourethirty', data-layout='button_count', data-action='like', data-show-faces='false', data-share='true')
+					a.fb-link(href='https://www.facebook.com/beforeyourethirty')
+						img.small-logo(src='images/fb.png')
+					a.fb-link(href='https://twitter.com/beforeyoure30')
+						img.small-logo(src='images/tw.png')
+			p.copyright &copy; Copyright 2014 
+				a(href='mailto:onea.alex@gmail.com') Alexandru Onea
+				| .

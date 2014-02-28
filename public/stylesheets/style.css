@@ -197,6 +197,10 @@ nav {
 	color: #888;
 }
 
+.footer .content {
+	padding-bottom: 30px;
+}
+
 .content {
 	padding: 50px 80px;
 	font-size: 30px;
@@ -457,4 +461,34 @@ button.btn.btn-success.send-button {
 
 .contact-form {
 	padding-left: 0px;
+}
+
+.contact-panel * {
+	font-size: 20px;
+}
+
+.fb-container {
+	display: block;
+	font-size: 0px;
+}
+
+.fb-like-button {
+	margin-bottom: 10px;
+}
+
+a.fb-link, a.fb-link * {
+	float: left;
+	display: inline-block;
+	margin-right: 2px;
+}
+
+img.small-logo {
+	width: 32px;
+	height: 32px;
+}
+
+p.copyright {
+	font-size: 15px;
+	color: #bbb;
+	margin-top: 10px;
 }
