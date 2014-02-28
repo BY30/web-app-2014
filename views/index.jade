@@ -15,7 +15,14 @@ block content
 					.navbar-header.centre
 						a.navbar-brand(href='/')
 					.navbar-header.centre.menu
-						a.navbar-brand(href='#')
+						a.navbar-brand.alternative-trigger(href='#')
+		ul.nav.nav-pills.nav-stacked.alternative-navigation.pull-right
+			li: a(href='#home'): span(href='#home') Home
+			li: a(href='#about'): span(href='#about') About
+			li: a(href='#speakers'): span(href='#speakers') Speakers
+			li: a(href='#venue'): span(href='#venue') Venue
+			li: a(href='#team'): span(href='#team') Team
+			li: a(href='#contact'): span(href='#contact') Contact
 		.title-bottom
 			span.big-number THREE
 			span.medium-text influential speakers

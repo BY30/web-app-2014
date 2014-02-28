@@ -1,4 +1,6 @@
-$('nav ul li a, nav ul li span').click(function(e){
+$('nav ul li a, nav ul li span, ul.nav li span, ul.nav li a').click(function(e){
+    document.querySelector('.alternative-navigation').style.display = 'none';
+    altMenuState = 0;
     $('html, body').animate({
         scrollTop: $($.attr(this, 'href')).offset().top - 100
     }, 300);
@@ -14,6 +16,21 @@ $('nav ul li a, nav ul li span').click(function(e){
 
 // 	description.classList.add('description-final');
 // });
+
+var altMenuState = 0;
+
+$('.alternative-trigger').click(function (e) {
+	console.log(altMenuState);
+	if (altMenuState == 0) {
+		document.querySelector('.alternative-navigation').style.display = 'block';
+		altMenuState = 1;
+	} else {
+		document.querySelector('.alternative-navigation').style.display = 'none';
+		altMenuState = 0;
+	}
+	e.preventDefault();
+	return false;
+});
 
 var checkScroll = function (e) {
 	if (window.scrollY >= 600) {

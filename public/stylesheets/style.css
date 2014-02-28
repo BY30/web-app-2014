@@ -272,14 +272,6 @@ nav {
 	/*text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;*/
 }
 
-.session-date:before, .session-date:after {
-	content: "";
-	display: block;
-	height: 5px;
-	width: 100%;
-	border-bottom: 5px solid #ccc;
-}
-
 @media (min-width: 1171px) {
 	.tile, img.speaker, .cover {
 		position: absolute;
@@ -461,6 +453,11 @@ button.btn.btn-success.send-button {
 
 .contact-form {
 	padding-left: 0px;
+	padding-right: 30px;
+}
+
+.alternative-contact {
+	padding-left: 0px;
 }
 
 .contact-panel * {
@@ -491,4 +488,31 @@ p.copyright {
 	font-size: 15px;
 	color: #bbb;
 	margin-top: 10px;
+}
+
+.alternative-navigation {
+	background-color: #111;
+	width: 100%;
+	display: inline-block;
+	margin-top: 100px;
+	top: 0px;
+	position: fixed;
+	display: none;
+	z-index: 100;
+	opacity: .95;
+}
+
+.alternative-navigation li{
+	padding: 25px 60px;
+	display: block;
+	float: right;
+	clear: both;
+}
+
+.alternative-navigation span {
+	font-size: 50px !important;
+}
+
+.alternative-navigation a:hover {
+	background: transparent !important;
 }
