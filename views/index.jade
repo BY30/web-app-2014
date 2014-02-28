@@ -4,16 +4,18 @@ block content
 	section.page.home#home
 		.nav-wrapper
 		nav.navbar.navbar-default(role='navigation')
-					ul.nav.navbar-nav.pull-left
+					ul.nav.navbar-nav.pull-left.left-nav
 						li: a(href='#home'): span(href='#home') Home
 						li: a(href='#about'): span(href='#about') About
 						li: a(href='#speakers'): span(href='#speakers') Speakers
-					ul.nav.navbar-nav.pull-right
+					ul.nav.navbar-nav.pull-right.right-nav
 						li: a(href='#venue'): span(href='#venue') Venue
 						li: a(href='#team'): span(href='#team') Team
 						li: a(href='#contact'): span(href='#contact') Contact
 					.navbar-header.centre
 						a.navbar-brand(href='/')
+					.navbar-header.centre.menu
+						a.navbar-brand(href='#')
 		.title-top
 			h1 IDEAS WORTH SHARING
 			h1 PEOPLE WORTH KNOWING
@@ -25,8 +27,7 @@ block content
 	section.page.about#about
 		.content
 			h1.normal What's all this about?
-			p BY30 is drawing inspirational speakers from around the country to Manchester's coolest basement bar, 2022nq (Dale Street, Norther Quarter).
-			p We have three speakers at each event who each speak for thirty minutes, offering a totally new way of giving talks. What do they talk about? Architecture, art, music, design, social issues, the future, the past, the present… whatever they deem to be inspirational!
+			p As a student led organisation, we know how hard it is to set up lecture series and make them a success - which is why we threw out the word lecture at the very beginning. Rather than inviting speakers to talk for two hours on one topic, BY30 offers its audience three speakers each talking for a maximum of thirty minutes. What do they talk about? Architecture, art, music, design, social issues, the future, the past, the present... whatever they deem to be inspirational. We’ve had a DJ talk about Manchester’s significant musical heritage, an architecture student turned award winning film producer, to the only Architect to appear on the BBC’s Apprentice.
 			p Come along, stay for a drink after, meet like minded people, be part of a fresh way of listening to talks. BY30 is open to students, professionals - anyone who's curious.
 			p We run on the last Tuesday of the month (during university term time). Doors open at 5.30 for a 6pm start and the talks are finished by 8pm.
 			p We work in collaboration with the Manchester Student Society of Architecture (MSSA) and Article25, and are very kindly sponsored by the international architectural practice BDP., who are headquartered just down the road. It's free!
@@ -36,34 +37,34 @@ block content
 		.content
 			.session.container-fluid
 				h1.session-date October 2013
-				.col-md-4.column
+				.col-xs-4.column
 					.cover
 					h1.tile-title Alex Haw
 					.tile
 					img.speaker(src='images/speakers/oct2013/alex_haw.jpg')
-				.col-md-4.column
+				.col-xs-4.column
 					.cover
 					h1.tile-title Ben Street
 					.tile
 					img.speaker(src='images/speakers/oct2013/ben_street.jpg')
-				.col-md-4.column
+				.col-xs-4.column
 					.cover
 					h1.tile-title Irena Bauman
 					.tile
 					img.speaker(src='images/speakers/oct2013/irena_bauman.jpg')
 			.session.container-fluid
 				h1.session-date November 2013
-				.col-md-4.column
+				.col-xs-4.column
 					.cover
 					h1.tile-title Jeremy Till
 					.tile
 					img.speaker(src='images/speakers/nov2013/jeremy_till.jpg')
-				.col-md-4.column
+				.col-xs-4.column
 					.cover
 					h1.tile-title Nicola Read
 					.tile
 					img.speaker(src='images/speakers/nov2013/nicola_read.jpg')
-				.col-md-4.column
+				.col-xs-4.column
 					.cover
 					h1.tile-title Jonathan Foyle
 					.tile
@@ -78,13 +79,21 @@ block content
 	section.page.team#team
 		.content
 			h1.normal The Team
-			p The Engine House is a unique space inside one of Manchester’s oldest mill buildings. The high-quality conversion combines original architectural features, modern facilities and even Burgess’s own furniture and musical instruments to create a distinctive location for your event.
-			p Established as a welcoming and professional venue we have recently hosted performances with: Manchester Camerata, Psappha, Euros Childs, Ethan Johns, Liam Frost, Momus and Outfit; readings by Iain Sinclair, Chuck Palahniuk, Jonathan Meades and Simon Armitage; conferences, workshops and away-days for Manchester Metropolitan University, Manchester City Council, The Audience Agency and the Performing Arts Network and Development Agency, plus featured as a venue for the Manchester Literature Festival, Manchester Science Festival and Manchester Comedy Festival.
+			p Before You’re 30 (BY30) was founded in January 2013 and has since become MSA’s most popular informal lecture series. All our events are free of charge and attract some fantastic speakers from around the country. Keep updated with our monthly events through our Facebook and our Twitter.
 	section.page.contact#contact
 		.content
 			h1.normal Contact Us
-			p The Engine House is a unique space inside one of Manchester’s oldest mill buildings. The high-quality conversion combines original architectural features, modern facilities and even Burgess’s own furniture and musical instruments to create a distinctive location for your event.
-			p Established as a welcoming and professional venue we have recently hosted performances with: Manchester Camerata, Psappha, Euros Childs, Ethan Johns, Liam Frost, Momus and Outfit; readings by Iain Sinclair, Chuck Palahniuk, Jonathan Meades and Simon Armitage; conferences, workshops and away-days for Manchester Metropolitan University, Manchester City Council, The Audience Agency and the Performing Arts Network and Development Agency, plus featured as a venue for the Manchester Literature Festival, Manchester Science Festival and Manchester Comedy Festival.
+			.container-fluid.inline-block
+				.col-md-6.contact-form
+					form
+						.form-group
+							input.form-control#name(type='text', name='name', placeholder='Your name')
+						.form-group
+							input.form-control#email(type='email', name='email', placeholder='Your e-mail')
+						.form-group
+							textarea.form-control(name='message', placeholder='Your message')
+						button.btn.btn-success.send-button(type='button', name='send') Send
+				.col-md-6
 	section.page.footer
 		.content
 			.container-fluid.inline-block
