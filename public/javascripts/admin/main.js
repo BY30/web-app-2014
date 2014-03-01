@@ -153,7 +153,20 @@ $(document).on('click', '.btn-save', function (e) {
 	});
 });
 
-$('.editable').on('paste', function (e) {
+$(document).on('paste', '.editable', function (e) {
+
+	var pastedText = undefined;
+
+	if (window.clipboardData && window.clipboardData.getData) { // IE
+		pastedText = window.clipboardData.getData('Text');
+	} else if (e.clipboardData && e.clipboardData.getData) {
+		pastedText = e.clipboardData.getData('text/plain');
+	} else if (e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+		pastedText = e.originalEvent.clipboardData.getData('text/plain');
+	}
+
+	this.innerHTML = pastedText;
+
 	e.preventDefault();
-	document.execCommand('inserttext', false, prompt('Paste something.'));
+	return false;
 });
