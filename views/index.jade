@@ -30,11 +30,11 @@ block content
 			span.medium-text.gray minutes each
 	section.page.about#about
 		.content
-			h1.normal What's all this about?
-			p As a student led organisation, we know how hard it is to set up lecture series and make them a success - which is why we threw out the word lecture at the very beginning. Rather than inviting speakers to talk for two hours on one topic, BY30 offers its audience three speakers each talking for a maximum of thirty minutes. What do they talk about? Architecture, art, music, design, social issues, the future, the past, the present... whatever they deem to be inspirational. We’ve had a DJ talk about Manchester’s significant musical heritage, an architecture student turned award winning film producer, to the only Architect to appear on the BBC’s Apprentice.
-			p Come along, stay for a drink after, meet like minded people, be part of a fresh way of listening to talks. BY30 is open to students, professionals - anyone who's curious.
-			p We run on the last Tuesday of the month (during university term time). Doors open at 5.30 for a 6pm start and the talks are finished by 8pm.
-			p We work in collaboration with the Manchester Student Society of Architecture (MSSA) and Article25, and are very kindly sponsored by the international architectural practice BDP., who are headquartered just down the road. It's free!
+			- for item in aboutData
+				- if (item.type == 'h2')
+					h1.normal #{item.content}
+				- else
+					p #{item.content}
 	section.page.speakers#speakers
 		.speakers-header
 			h1.big-text Speakers
@@ -110,7 +110,7 @@ block content
 						| Greater Manchester, United Kingdom
 					p: strong General contact details:
 					address
-						a(href='mailto:by30@gmail.com') by30@gmail.com
+						a(href='mailto:beforeyoure30@gmail.com') beforeyoure30@gmail.com
 						br
 						a(href='http://mssa.msa.ac.uk') mssa.msa.ac.uk
 	section.page.footer

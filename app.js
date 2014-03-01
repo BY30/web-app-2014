@@ -11,6 +11,9 @@ var path = require('path');
 
 var app = express();
 
+routes.admin = require('./routes/admin');
+routes.update = require('./routes/update');
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +32,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/admin', routes.admin);
 app.get('/users', user.list);
+
+app.post('/update', routes.update);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

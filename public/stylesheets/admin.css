@@ -1,0 +1,83 @@
+body {
+	margin: 0px;
+	padding: 50px;
+	height: 100%;
+	overflow-y: scroll;
+	background: #f5f5f5;
+}
+
+.notification {
+	margin-left: 10px;
+}
+
+.saved {
+	color: #5cb85c;
+}
+
+.modified {
+	color: #f0ad4e;
+}
+
+.error {
+	color: #d9534f;
+}
+
+.danger {
+	border: 1px solid #d9534f !important;
+	padding: 9px !important;
+}
+
+.saved, .modified, .error {
+	display: none;
+}
+
+.section-controls {
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+.btn-content {
+	margin-left: 10px;
+}
+
+.editable-section-control {
+	margin: 0 2px;
+}
+
+span.glyphicon.remove-button {
+	position: absolute;
+	font-size: 25px;
+	top: -7px;
+	right: -7px;
+	display: none;
+	color: #d9534f;
+	cursor: pointer;
+}
+
+.editable {
+	position: relative;
+	cursor: text;
+}
+
+.editable-group {
+	position: relative;
+	width: 100%;
+}
+
+
+.editable-group:hover > .editable {
+	background-color: #ffffc8;
+	border: 1px dotted #888;
+	padding: 9px;
+}
+
+.editable-group:hover > span.glyphicon.remove-button {
+	display: block;
+}
+
+.heading, .content {
+	position: relative;
+	margin: 10px 0px;
+	padding: 10px;
+}

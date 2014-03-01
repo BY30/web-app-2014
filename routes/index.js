@@ -1,8 +1,8 @@
+var fs = require('fs');
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'BY30'});
+exports.index = function(req, res) {
+	var aboutData = fs.readFileSync('./data/about.dat');
+	aboutData = JSON.parse(aboutData);
+	
+	res.render('index', { title: 'BY30', aboutData: aboutData});
 };
