@@ -72,7 +72,7 @@ var toggleErrorsNotification = function (element, state) {
 };
 
 var checkErrors = function (context) {
-	var elements = document.querySelectorAll('#' + context + ' .editable');
+	var elements = document.querySelectorAll('#' + context + ' .text-data .editable');
 	var result = false;
 
 	if (elements.length == 0) return true;
@@ -114,14 +114,22 @@ $(document).on('click', '.btn-add-heading', function (e) {
 	var element = generateEditableGroup('h2');
 	var target = this.parentNode.getAttribute('for');
 
-	document.querySelector(target).appendChild(element);
+	document.querySelector(target + ' .text-data').appendChild(element);
 });
 
 $(document).on('click', '.btn-add-paragraph', function (e) {
 	var element = generateEditableGroup('p');
 	var target = this.parentNode.getAttribute('for');
 
-	document.querySelector(target).appendChild(element);
+	document.querySelector(target + ' .text-data').appendChild(element);
+});
+
+$(document).on('click', '.btn-add-photo', function (e) {
+	var target = this.getAttribute('for');
+	var inputElement = document.querySelector(target + ' .photo-input');
+
+	console.log(inputElement);
+	$(inputElement).click();
 });
 
 $(document).on('click', '.remove-button', function (e) {

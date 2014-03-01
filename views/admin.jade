@@ -19,14 +19,16 @@ html
 				.panel-collapse.collapse#about-section
 					.panel-body
 						#about-section-edit.section-edit(notification-area='#about-section-title', section='about')
-							- for item in aboutData
-								.editable-group
-									- if (item.type == 'h2')
-										h2.heading.editable(contenteditable) #{item.content}
-										span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
-									- else
-										p.content.editable(contenteditable) #{item.content}
-										span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+							.text-data
+								- if (aboutData)
+									- for item in aboutData
+										.editable-group
+											- if (item.type == 'h2')
+												h2.heading.editable(contenteditable) #{item.content}
+												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+											- else
+												p.content.editable(contenteditable) #{item.content}
+												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 						.section-controls(for='#about-section-edit')
 							.btn.btn-default.editable-section-control.btn-add-heading
 								span.glyphicon.glyphicon-plus
@@ -37,6 +39,7 @@ html
 							.btn.btn-success.editable-section-control.btn-save.pull-right
 								span.glyphicon.glyphicon-save.btn-icon
 								span.btn-content Save
+
 			.panel.panel-default
 				.panel-heading
 					h4.panel-title
@@ -44,20 +47,94 @@ html
 				.panel-collapse.collapse#speakers-section
 					.panel-body
 						p This is awesome too
+
 			.panel.panel-default
 				.panel-heading
-					h4.panel-title
+					h4.panel-title#venue-section-title
 						a(data-toggle='collapse', data-parent='#accordion', href='#venue-section') Venue
+						span.notification.glyphicon.glyphicon-ok.saved.pull-right
+						span.notification.glyphicon.glyphicon-warning-sign.modified.pull-right
+						span.notification.glyphicon.glyphicon-exclamation-sign.error.pull-right
 				.panel-collapse.collapse#venue-section
 					.panel-body
-						p This is awesome too venue
+						#venue-section-edit.section-edit(notification-area='#venue-section-title', section='venue')
+							.text-data
+								- if (venueData)
+									- for item in venueData
+										.editable-group
+											- if (item.type == 'h2')
+												h2.heading.editable(contenteditable) #{item.content}
+												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+											- else
+												p.content.editable(contenteditable) #{item.content}
+												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+						.section-controls(for='#venue-section-edit')
+							.btn.btn-default.editable-section-control.btn-add-heading
+								span.glyphicon.glyphicon-plus
+								span.btn-content Heading
+							.btn.btn-default.editable-section-control.btn-add-paragraph
+								span.glyphicon.glyphicon-plus
+								span.btn-content Paragraph
+							.btn.btn-success.editable-section-control.btn-save.pull-right
+								span.glyphicon.glyphicon-save.btn-icon
+								span.btn-content Save
+
 			.panel.panel-default
 				.panel-heading
-					h4.panel-title
+					h4.panel-title#team-section-title
 						a(data-toggle='collapse', data-parent='#accordion', href='#team-section') Team
+						span.notification.glyphicon.glyphicon-ok.saved.pull-right
+						span.notification.glyphicon.glyphicon-warning-sign.modified.pull-right
+						span.notification.glyphicon.glyphicon-exclamation-sign.error.pull-right
 				.panel-collapse.collapse#team-section
 					.panel-body
-						p This is awesome too team
+						#team-section-edit.section-edit(notification-area='#team-section-title', section='team')
+							.text-data
+								- if (teamData && teamData.info)
+									- for item in teamData.info
+										.editable-group
+											- if (item.type == 'h2')
+												h2.heading.editable(contenteditable) #{item.content}
+												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+											- else
+												p.content.editable(contenteditable) #{item.content}
+												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+							hr
+							.list-data
+								.team-member-data.editable-group
+									.member-photo
+										img.preview(src='images/speakers/oct2013/alex_haw.jpg', for='#m1234')
+									.member-info
+										.editable-group
+											h2.heading.editable(contenteditable) Alex Haw
+											p.content.editable(contenteditable) This is a fucking description
+									span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+								.team-member-data.editable-group#m1234
+									.member-photo
+										input(type='file', name='photo').hidden.photo-input
+										img.preview.btn-add-photo(src='images/default_photo.png', for='#m1234')
+									.member-info
+										.editable-group
+											h2.heading.editable(contenteditable) Alex Haw
+											p.content.editable(contenteditable) This is a fucking description
+									span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+								- if (teamData && teamData.members)
+									p ala
+								- else
+									.centre-container.empty-list-warning: i No team members added yet
+						.section-controls(for='#team-section-edit')
+							.btn.btn-default.editable-section-control.btn-add-heading
+								span.glyphicon.glyphicon-plus
+								span.btn-content Heading
+							.btn.btn-default.editable-section-control.btn-add-paragraph
+								span.glyphicon.glyphicon-plus
+								span.btn-content Paragraph
+							.btn.btn-default.editable-section-control.btn-add-team-member
+								span.glyphicon.glyphicon-plus
+								span.btn-content Team member
+							.btn.btn-success.editable-section-control.btn-save.pull-right
+								span.glyphicon.glyphicon-save.btn-icon
+								span.btn-content Save
 
 	script(src='/javascripts/jquery.js')
 	script(src='/javascripts/bootstrap.min.js')
