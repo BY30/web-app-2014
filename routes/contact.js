@@ -8,7 +8,7 @@ var contact = function (req, res) {
 	mail({
 		from: email,
 		to: 'onea.alex@gmail.com',
-		subject: 'BY30 contact from [' + name + ']',
+		subject: 'BY30 enquiry from ' + name + ' [sent via form]',
 		text: content
 	});
 

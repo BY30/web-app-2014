@@ -57,6 +57,12 @@ $(document).on('click', '.send-button', function (e) {
 		data: data,
 		success: function (data, err) {
 			console.log(data);
+			$('#name').val('');
+			$('#email').val('');
+			$('3content').val('');
+
+			this.innerHTML = 'Your message has been sent!';
+			this.classList.add('disabled');
 		}
 	});
 });
