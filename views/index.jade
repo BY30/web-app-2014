@@ -84,8 +84,20 @@ block content
 					p #{item.content}
 	section.page.team#team
 		.content
-			h1.normal The Team
-			p Before You’re 30 (BY30) was founded in January 2013 and has since become MSA’s most popular informal lecture series. All our events are free of charge and attract some fantastic speakers from around the country. Keep updated with our monthly events through our Facebook and our Twitter.
+			- for item in teamData.elements
+				- if (item.type == 'h2')
+					h1.normal #{item.content}
+				- else
+					p #{item.content}
+			br
+			- if (teamData && teamData.members)
+				- for item in teamData.members
+					.team-member-data(id='#{item.id}')
+						.member-photo
+							img.preview.btn-add-photo(src='#{item.photo}', for='##{item.id}')
+						.member-info
+								h2.heading #{item.name}
+								p.content #{item.description}
 	section.page.contact#contact
 		.content
 			h1.normal Contact Us
@@ -120,8 +132,9 @@ block content
 			.container-fluid.inline-block
 				.col-md-4.partners
 					h4 Partners
-					img.logo(src='images/logo/mssa.png')
 					img.logo(src='images/logo/msa.png')
+					br
+					img.logo(src='images/logo/mssa.png')
 				.col-md-4.sponsors
 					h4 Sponsors
 					img.logo(src='images/logo/bdp.png')

@@ -516,3 +516,48 @@ p.copyright {
 .alternative-navigation a:hover {
 	background: transparent !important;
 }
+
+.team-member-data {
+	font-family: "Helvetica Special";
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	clear: both;
+	padding: 10px;
+}
+
+.team-member-data > * {
+	float: left;
+}
+
+.team-member-data p {
+	font-size: 20px;
+	padding: 0px;
+	margin: 0px;
+}
+
+img.preview {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border-radius: 200px;
+	background: #ddd;
+	border: 3px solid #fff;
+}
+.member-info h2 {
+	margin-top: 0px;
+	font-family: "Helvetica Special";
+}
+
+.team-member-data .member-info,
+.team-member-data .member-photo {
+	position: relative;
+	float: left;
+	margin-right: 20px;
+}
+
+.team-member-data .member-info .heading,
+.team-member-data .member-info .content {
+	margin: 0px;
+	padding: 5px 10px;
+}

@@ -90,8 +90,8 @@ html
 					.panel-body
 						#team-section-edit.section-edit(notification-area='#team-section-title', section='team')
 							.text-data
-								- if (teamData && teamData.info)
-									- for item in teamData.info
+								- if (teamData && teamData.elements)
+									- for item in teamData.elements
 										.editable-group
 											- if (item.type == 'h2')
 												h2.heading.editable(contenteditable) #{item.content}
@@ -101,26 +101,18 @@ html
 												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 							hr
 							.list-data
-								.team-member-data.editable-group
-									.member-photo
-										img.preview(src='images/speakers/oct2013/alex_haw.jpg', for='#m1234')
-									.member-info
-										.editable-group
-											h2.heading.editable(contenteditable) Alex Haw
-											p.content.editable(contenteditable) This is a fucking description
-									span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
-								.team-member-data.editable-group#m1234
-									.member-photo
-										input(type='file', name='photo').hidden.photo-input
-										img.preview.btn-add-photo(src='images/default_photo.png', for='#m1234')
-									.member-info
-										.editable-group
-											h2.heading.editable(contenteditable) Alex Haw
-											p.content.editable(contenteditable) This is a fucking description
-									span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 								- if (teamData && teamData.members)
-									p ala
-								- else
+									- for item in teamData.members
+										.team-member-data.editable-group(id='#{item.id}')
+											.member-photo
+												input(type='file', name='member-photo').hidden.photo-input
+												img.preview.btn-add-photo(src='#{item.photo}', for='##{item.id}')
+											.member-info
+												.editable-group
+													h2.heading.editable(contenteditable) #{item.name}
+													p.content.editable(contenteditable) #{item.description}
+											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+								- if (!teamData || !teamData.members)
 									.centre-container.empty-list-warning: i No team members added yet
 						.section-controls(for='#team-section-edit')
 							.btn.btn-default.editable-section-control.btn-add-heading

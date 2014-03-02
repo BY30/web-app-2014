@@ -28,6 +28,66 @@ var generateEditableGroup = function (type) {
 	return editableGroup;
 };
 
+var generateTeamMemberGroup = function () {
+	var teamMemberData = document.createElement('div');
+	teamMemberData.classList.add('team-member-data');
+	teamMemberData.classList.add('editable-group');
+	teamMemberData.id = 'm' + Date.now();
+
+	var memberInfo = document.createElement('div');
+	memberInfo.classList.add('member-info');
+
+	var memberPhoto = document.createElement('div');
+	memberPhoto.classList.add('member-photo');
+
+	var inputElement = document.createElement('input');
+	inputElement.setAttribute('type', 'file');
+	inputElement.setAttribute('name', 'member-photo');
+	inputElement.classList.add('hidden');
+	inputElement.classList.add('photo-input');
+
+	var photoPreview = document.createElement('img');
+	photoPreview.setAttribute('src', 'images/default_photo.png');
+	photoPreview.setAttribute('for', '#' + teamMemberData.id);
+	photoPreview.classList.add('preview');
+	photoPreview.classList.add('btn-add-photo');
+
+	memberPhoto.appendChild(inputElement);
+	memberPhoto.appendChild(photoPreview);
+
+	var editableGroup = document.createElement('div');
+	editableGroup.classList.add('editable-group');
+
+	var memberHeading = document.createElement('h2');
+	memberHeading.setAttribute('contenteditable', '');
+	memberHeading.classList.add('editable');
+	memberHeading.classList.add('heading');
+	memberHeading.innerHTML = 'Full Name goes here! Click to edit...';
+
+	var memberContent = document.createElement('p');
+	memberContent.setAttribute('contenteditable', '');
+	memberContent.classList.add('editable');
+	memberContent.classList.add('content');
+	memberContent.innerHTML = 'Description goes here! Click to edit...';
+
+	var removeButton = document.createElement('span');
+	removeButton.classList.add('glyphicon');
+	removeButton.classList.add('glyphicon-remove-circle');
+	removeButton.classList.add('pull-right');
+	removeButton.classList.add('remove-button');
+
+	editableGroup.appendChild(memberHeading);
+	editableGroup.appendChild(memberContent);
+
+	memberInfo.appendChild(editableGroup);
+
+	teamMemberData.appendChild(memberPhoto);
+	teamMemberData.appendChild(memberInfo);
+	teamMemberData.appendChild(removeButton);
+
+	return teamMemberData;
+};
+
 var enableModifiedNotification = function (element) {
 	var target = element.getAttribute('notification-area');
 	var saveButtonIcon = document.querySelector('#' + element.parentNode.parentNode.id + ' .btn-save .btn-icon');
@@ -138,6 +198,13 @@ $(document).on('click', '.btn-add-paragraph', function (e) {
 	document.querySelector(target + ' .text-data').appendChild(element);
 });
 
+$(document).on('click', '.btn-add-team-member', function (e) {
+	var element = generateTeamMemberGroup();
+	var target = this.parentNode.getAttribute('for');
+
+	document.querySelector(target + ' .list-data').appendChild(element);
+});
+
 $(document).on('click', '.btn-add-photo', function (e) {
 	var target = this.getAttribute('for');
 	var inputElement = document.querySelector(target + ' .photo-input');
@@ -160,14 +227,27 @@ $(document).on('click', '.btn-save', function (e) {
 	var data = new Object();
 	data.section = targetElement.getAttribute('section');
 	data.elements = new Array();
+	data.speakers = new Array();
+	data.members = new Array();
 
-	var elems = document.querySelectorAll(target + ' .editable');
+	var elems = document.querySelectorAll(target + ' .text-data .editable');
 	for (var i = 0; i < elems.length; i++) {
 		var element = new Object();
 		element.type = elems[i].tagName.toLowerCase();
 		element.content = elems[i].innerHTML;
 
 		data.elements.push(element);
+	};
+
+	var members = document.querySelectorAll(target + ' .list-data .team-member-data');
+	for (var i = 0; i < members.length; i++) {
+		var mbr = new Object();
+		mbr.id = members[i].id;
+		mbr.photo = members[i].querySelector('img.preview').getAttribute('src');
+		mbr.name = members[i].querySelector('.heading').innerHTML;
+		mbr.description = members[i].querySelector('.content').innerHTML;
+
+		data.members.push(mbr);
 	};
 
 	this.classList.add('disabled');
@@ -194,4 +274,15 @@ $(document).on('paste', '.editable', function (e) {
 
 	e.preventDefault();
 	return false;
+});
+
+$(document).on('DOMSubtreeModified', '#team-section-edit .list-data', function (e) {
+	var members = this.querySelectorAll('.team-member-data');
+	var notification = this.querySelector('.empty-list-warning');
+
+	if (members.length == 0) {
+		$(notification).show();
+	} else {
+		$(notification).hide();
+	}
 });
