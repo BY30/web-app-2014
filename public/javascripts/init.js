@@ -45,12 +45,11 @@ var checkScroll = function (e) {
 };
 
 $(document).on('click', '.send-button', function (e) {
-	var elem = this.parentNode;
 
 	var data = new Object();
-	data.name = elem.querySelector('#name').val();
-	data.email = elem.querySelector('#email').val();
-	data.content = elem.querySelector('#content').val();
+	data.name = document.querySelector('#name').val();
+	data.email = document.querySelector('#email').val();
+	data.content = document.querySelector('#content').val();
 
 	$.ajax({
 		type: 'post',
