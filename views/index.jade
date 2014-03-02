@@ -42,20 +42,31 @@ block content
 			.session.container-fluid
 				h1.session-date October 2013
 				.col-xs-4.column
-					.cover
+					.cover(for='#s123')
 					h1.tile-title Alex Haw
 					.tile
 					img.speaker(src='images/speakers/oct2013/alex_haw.jpg')
 				.col-xs-4.column
-					.cover
+					.cover(for='#s234')
 					h1.tile-title Ben Street
 					.tile
 					img.speaker(src='images/speakers/oct2013/ben_street.jpg')
 				.col-xs-4.column
-					.cover
+					.cover(for='#s345')
 					h1.tile-title Irena Bauman
 					.tile
 					img.speaker(src='images/speakers/oct2013/irena_bauman.jpg')
+				.clear
+				.panel-group
+					.collapse.panel-collapse#s123
+						.panel-body
+							p This is a description for speaker 1
+					.collapse.panel-collapse#s234
+						.panel-body
+							p This is a description for speaker 2
+					.collapse.panel-collapse#s345
+						.panel-body
+							p This is a description for speaker 3
 			.session.container-fluid
 				h1.session-date November 2013
 				.col-xs-4.column

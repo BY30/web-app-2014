@@ -69,4 +69,15 @@ $(document).on('click', '.send-button', function (e) {
 	});
 });
 
+$(document).on('click', '.cover', function (e) {
+	var target = this.parentNode.parentNode.querySelector(this.getAttribute('for'));
+
+	console.log(target);
+	var all = document.querySelectorAll('.panel-collapse.in');
+	for (var i = 0; i < all.length; i++) {
+		$(all[i]).collapse('hide');
+	};
+	$(target).collapse('toggle');
+});
+
 window.addEventListener('scroll', checkScroll, false);

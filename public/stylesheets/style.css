@@ -561,3 +561,11 @@ img.preview {
 	margin: 0px;
 	padding: 5px 10px;
 }
+
+.panel-collapse {
+	font-size: 20px;
+}
+
+.clear {
+	clear: both;
+}
