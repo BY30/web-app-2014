@@ -102,6 +102,20 @@ var pushUpdates = function (data, cb) {
 	});
 };
 
+var updatePhotoPreview = function (inputElement) {
+	if (inputElement.files && inputElement.files[0]) {
+
+		var target = inputElement.parentNode.querySelector('img.preview');
+		var fileReader = new FileReader();
+
+		fileReader.onload = function (e) {
+			target.setAttribute('src', e.target.result);
+		}
+
+		fileReader.readAsDataURL(inputElement.files[0]);
+	}
+}
+
 $(document).on('DOMSubtreeModified', '.section-edit', function (e) {
 	
 	enableModifiedNotification(this);
@@ -128,8 +142,11 @@ $(document).on('click', '.btn-add-photo', function (e) {
 	var target = this.getAttribute('for');
 	var inputElement = document.querySelector(target + ' .photo-input');
 
-	console.log(inputElement);
 	$(inputElement).click();
+});
+
+$(document).on('change', '.photo-input', function (e) {
+	updatePhotoPreview(this);
 });
 
 $(document).on('click', '.remove-button', function (e) {
