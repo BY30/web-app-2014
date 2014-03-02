@@ -47,9 +47,9 @@ var checkScroll = function (e) {
 $(document).on('click', '.send-button', function (e) {
 
 	var data = new Object();
-	data.name = document.querySelector('#name').val();
-	data.email = document.querySelector('#email').val();
-	data.content = document.querySelector('#content').val();
+	data.name = $('#name').val();
+	data.email = $('#email').val();
+	data.content = $('#content').val();
 
 	$.ajax({
 		type: 'post',
