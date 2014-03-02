@@ -150,7 +150,6 @@ var checkErrors = function (context) {
 };
 
 var pushUpdates = function (data, cb) {
-	console.log('da');
 	$.ajax({
 		type: 'post',
 		url: '/update',
