@@ -51,6 +51,8 @@ $(document).on('click', '.send-button', function (e) {
 	data.email = $('#email').val();
 	data.content = $('#content').val();
 
+	var button = this;
+
 	$.ajax({
 		type: 'post',
 		url: '/contact',
@@ -61,8 +63,8 @@ $(document).on('click', '.send-button', function (e) {
 			$('#email').val('');
 			$('#content').val('');
 
-			this.innerHTML = 'Your message has been sent!';
-			this.classList.add('disabled');
+			button.innerHTML = 'Your message has been sent!';
+			button.classList.add('disabled');
 		}
 	});
 });
