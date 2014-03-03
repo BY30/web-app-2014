@@ -7,6 +7,8 @@ html
 		link(rel='icon', type='image/png', href='/images/icon.png')
 	body
 		h1 BY30 Administration Panel
+		p Logged in as #{username}.
+		a(href='/logout'): .btn.btn-danger Logout
 		p Select a section in order to start editing
 		.panel-group#accordion
 			.panel.panel-default

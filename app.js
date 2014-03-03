@@ -14,6 +14,8 @@ var app = express();
 routes.admin = require('./routes/admin');
 routes.update = require('./routes/update');
 routes.contact = require('./routes/contact');
+routes.login = require('./routes/login');
+routes.logout = require('./routes/logout');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -24,6 +26,8 @@ app.use(express.logger('dev'));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.methodOverride());
+app.use(express.cookieParser());
+app.use(express.session({secret: '1234567890QWERTY'}));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -34,10 +38,13 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/admin', routes.admin);
+app.get('/login', routes.login);
+app.get('/logout', routes.logout);
 app.get('/users', user.list);
 
 app.post('/update', routes.update);
 app.post('/contact', routes.contact);
+app.post('/login', routes.login);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
