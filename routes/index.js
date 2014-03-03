@@ -10,9 +10,13 @@ exports.index = function(req, res) {
 	var teamData = fs.readFileSync('./data/team.dat');
 	teamData = JSON.parse(teamData);
 	
+	var speakersData = fs.readFileSync('./data/speakers.dat');
+	speakersData = JSON.parse(speakersData);
+
 	res.render('index', { title: 'BY30',
 		aboutData: aboutData,
 		venueData: venueData,
-		teamData: teamData
+		teamData: teamData,
+		speakersData: speakersData
 	});
 };

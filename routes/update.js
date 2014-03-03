@@ -12,6 +12,8 @@ var update = function (req, res) {
 		fileData = new Object();
 		fileData.elements = data.elements;
 		fileData.members = data.members;
+	} else {
+		fileData = data.sessions;
 	}
 
 	fs.writeFile('./data/' + fileName, JSON.stringify(fileData), function (err) {

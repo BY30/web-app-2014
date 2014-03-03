@@ -10,6 +10,10 @@ body {
 	display: none;
 }
 
+.centre {
+	text-align: center;
+}
+
 .centre-container {
 	position: relative;
 	margin: 5px 0px;
@@ -70,6 +74,9 @@ span.glyphicon.remove-button {
 .editable {
 	position: relative;
 	cursor: text;
+	padding: 10px;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 
 .editable-group {
@@ -94,7 +101,9 @@ span.glyphicon.remove-button {
 	padding: 10px;
 }
 
-.team-member-data {
+.team-member-data,
+.speaker-data,
+.session-data {
 	position: relative;
 	display: inline-block;
 	width: 100%;
@@ -102,27 +111,42 @@ span.glyphicon.remove-button {
 	padding: 10px;
 }
 
-.team-member-data:hover {
+.team-member-data:hover,
+.session-data:hover {
 	border: 1px dotted #888;
 	background-color: #ffffc8;
 	padding: 9px;
 }
 
 .team-member-data .member-info,
-.team-member-data .member-photo {
+.team-member-data .member-photo,
+.speaker-data .speaker-info,
+.speaker-data .speaker-photo {
 	position: relative;
 	float: left;
 	margin-right: 20px;
 }
 
 .team-member-data .member-info .heading,
-.team-member-data .member-info .content {
+.team-member-data .member-info .content,
+.speaker-data .speaker-info .heading,
+.speaker-data .speaker-info .content {
 	margin: 0px;
 	padding: 5px 10px;
 }
 
-.team-member-data .member-info .editable-group:hover > .editable {
+.team-member-data .member-info .editable-group:hover > .editable,
+.speaker-data .speaker-info .editable-group:hover > .editable {
 	padding: 4px 9px;
+}
+
+.member-info .editable,
+.speaker-info .editable {
+	max-width: 1000px;
+}
+
+.session-data {
+	margin-bottom: 20px;
 }
 
 img.preview {

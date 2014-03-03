@@ -88,6 +88,105 @@ var generateTeamMemberGroup = function () {
 	return teamMemberData;
 };
 
+var generateSpeakerElement = function () {
+	
+	var speakerData = document.createElement('div');
+	speakerData.classList.add('speaker-data');
+	speakerData.id = 's' + Date.now();
+
+	var speakerInfo = document.createElement('div');
+	speakerInfo.classList.add('speaker-info');
+
+	var speakerPhoto = document.createElement('div');
+	speakerPhoto.classList.add('speaker-photo');
+
+	var inputElement = document.createElement('input');
+	inputElement.setAttribute('type', 'file');
+	inputElement.setAttribute('name', 'member-photo');
+	inputElement.classList.add('hidden');
+	inputElement.classList.add('photo-input');
+
+	var photoPreview = document.createElement('img');
+	photoPreview.setAttribute('src', '/images/default_photo.png');
+	photoPreview.setAttribute('for', '#' + speakerData.id);
+	photoPreview.classList.add('preview');
+	photoPreview.classList.add('btn-add-photo');
+
+	speakerPhoto.appendChild(inputElement);
+	speakerPhoto.appendChild(photoPreview);
+
+	var editableGroup = document.createElement('div');
+	editableGroup.classList.add('editable-group');
+
+	var speakerHeading = document.createElement('h2');
+	speakerHeading.setAttribute('contenteditable', '');
+	speakerHeading.classList.add('editable');
+	speakerHeading.classList.add('heading');
+	speakerHeading.innerHTML = 'Full Name goes here! Click to edit...';
+
+	var speakerContent = document.createElement('p');
+	speakerContent.setAttribute('contenteditable', '');
+	speakerContent.classList.add('editable');
+	speakerContent.classList.add('content');
+	speakerContent.innerHTML = 'Description goes here! Click to edit...';
+
+	editableGroup.appendChild(speakerHeading);
+	editableGroup.appendChild(speakerContent);
+
+	speakerInfo.appendChild(editableGroup);
+
+	speakerData.appendChild(speakerPhoto);
+	speakerData.appendChild(speakerInfo);
+
+	return speakerData;
+};
+
+var generateSessionElement = function () {
+	var sessionData = document.createElement('div');
+	sessionData.classList.add('session-data');
+	sessionData.classList.add('editable-group');
+
+	var sessionInfo = document.createElement('div');
+	sessionInfo.classList.add('session-info');
+	sessionInfo.classList.add('centre');
+
+	var editableGroup = document.createElement('div');
+	editableGroup.classList.add('editable-group');
+
+	var sessionHeading = document.createElement('h2');
+	sessionHeading.setAttribute('contenteditable', '');
+	sessionHeading.classList.add('editable');
+	sessionHeading.classList.add('heading');
+	sessionHeading.innerHTML = 'Session date goes here! Click to edit...';
+
+	var sessionList = document.createElement('div');
+	sessionList.classList.add('session-list');
+
+	var speaker1 = generateSpeakerElement();
+	var speaker2 = generateSpeakerElement();
+	var speaker3 = generateSpeakerElement();
+
+	var removeButton = document.createElement('span');
+	removeButton.classList.add('glyphicon');
+	removeButton.classList.add('glyphicon-remove-circle');
+	removeButton.classList.add('pull-right');
+	removeButton.classList.add('remove-button');
+
+	editableGroup.appendChild(sessionHeading);
+
+	sessionInfo.appendChild(editableGroup);
+
+	sessionList.appendChild(speaker1);
+	sessionList.appendChild(speaker2);
+	sessionList.appendChild(speaker3);
+
+	sessionData.appendChild(sessionInfo);
+	sessionData.appendChild(sessionList);
+	sessionData.appendChild(removeButton);
+
+	return sessionData;
+};
+
 var enableModifiedNotification = function (element) {
 	var target = element.getAttribute('notification-area');
 	var saveButtonIcon = document.querySelector('#' + element.parentNode.parentNode.id + ' .btn-save .btn-icon');
@@ -179,6 +278,8 @@ $(document).on('DOMSubtreeModified', '.section-edit', function (e) {
 	
 	enableModifiedNotification(this);
 
+	if (this.getAttribute('section') == 'speakers') return;
+
 	var errorsFound = checkErrors(this.id);
 	toggleErrorsNotification(this, errorsFound);
 });
@@ -219,6 +320,13 @@ $(document).on('click', '.remove-button', function (e) {
 	this.parentNode.remove();
 });
 
+$(document).on('click', '.btn-add-session', function (e) {
+	var element = generateSessionElement();
+	var target = this.parentNode.getAttribute('for');
+
+	document.querySelector(target + ' .list-data').appendChild(element);
+});
+
 $(document).on('click', '.btn-save', function (e) {
 	var target = this.parentNode.getAttribute('for');
 	var targetElement = document.querySelector(target);
@@ -226,7 +334,7 @@ $(document).on('click', '.btn-save', function (e) {
 	var data = new Object();
 	data.section = targetElement.getAttribute('section');
 	data.elements = new Array();
-	data.speakers = new Array();
+	data.sessions = new Array();
 	data.members = new Array();
 
 	var elems = document.querySelectorAll(target + ' .text-data .editable');
@@ -247,6 +355,26 @@ $(document).on('click', '.btn-save', function (e) {
 		mbr.description = members[i].querySelector('.content').innerHTML;
 
 		data.members.push(mbr);
+	};
+
+	var sessions = document.querySelectorAll(target + ' .list-data .session-data');
+	for (var i = 0; i < sessions.length; i++) {
+		var ssn = new Object();
+		ssn.date = sessions[i].querySelector('.session-info h2.heading').innerHTML;
+		ssn.speakers = new Array();
+
+		var speakers = sessions[i].querySelectorAll('.session-list .speaker-data');
+		for (var j = 0; j < speakers.length; j++) {
+			var spkr = new Object();
+			spkr.id = speakers[j].id;
+			spkr.photo = speakers[j].querySelector('img.preview').getAttribute('src');
+			spkr.name = speakers[j].querySelector('.heading').innerHTML;
+			spkr.description = speakers[j].querySelector('.content').innerHTML;
+
+			ssn.speakers.push(spkr);
+		};
+
+		data.sessions.push(ssn);
 	};
 
 	this.classList.add('disabled');
@@ -283,5 +411,18 @@ $(document).on('DOMSubtreeModified', '#team-section-edit .list-data', function (
 		$(notification).show();
 	} else {
 		$(notification).hide();
+	}
+});
+
+$(document).on('DOMSubtreeModified', '#speakers-section-edit .list-data', function (e) {
+	var sessions = this.querySelectorAll('.session-data');
+	var notification = this.parentNode.querySelector('.empty-list-warning');
+
+	if (sessions.length == 0) {
+		$(notification).show();
+		toggleErrorsNotification(this.parentNode, true);
+	} else {
+		$(notification).hide();
+		toggleErrorsNotification(this.parentNode, false);
 	}
 });

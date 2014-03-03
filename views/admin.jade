@@ -42,11 +42,41 @@ html
 
 			.panel.panel-default
 				.panel-heading
-					h4.panel-title
+					h4.panel-title#speakers-section-title
 						a(data-toggle='collapse', data-parent='#accordion', href='#speakers-section') Speakers
+						span.notification.glyphicon.glyphicon-ok.saved.pull-right
+						span.notification.glyphicon.glyphicon-warning-sign.modified.pull-right
+						span.notification.glyphicon.glyphicon-exclamation-sign.error.pull-right
 				.panel-collapse.collapse#speakers-section
 					.panel-body
-						p This is awesome too
+						#speakers-section-edit.section-edit(notification-area='#speakers-section-title', section='speakers')
+							.list-data
+								- if (speakersData)
+									- for item in speakersData
+										.session-data.editable-group
+											.session-info.centre
+												.editable-group
+													h2.heading.editable.centre(contenteditable) #{item.date}
+											.session-list
+												- for spkr in item.speakers
+													.speaker-data(id='#{spkr.id}')
+														.speaker-photo
+															input(type='file', name='member-photo').hidden.photo-input
+															img.preview.btn-add-photo(src='#{spkr.photo}', for='##{spkr.id}')
+														.speaker-info
+															.editable-group
+																h2.heading.editable(contenteditable) #{spkr.name}
+																p.content.editable(contenteditable) #{spkr.description}
+											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+							- if (!speakersData)
+								.centre-container.empty-list-warning: i No speakers added yet
+						.section-controls(for='#speakers-section-edit')
+							.btn.btn-default.editable-section-control.btn-add-session
+								span.glyphicon.glyphicon-plus
+								span.btn-content Session
+							.btn.btn-success.editable-section-control.btn-save.pull-right
+								span.glyphicon.glyphicon-save.btn-icon
+								span.btn-content Save
 
 			.panel.panel-default
 				.panel-heading

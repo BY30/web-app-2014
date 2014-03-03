@@ -39,51 +39,22 @@ block content
 		.speakers-header
 			h1.big-text Speakers
 		.content
-			.session.container-fluid
-				h1.session-date October 2013
-				.col-xs-4.column
-					.cover(for='#s123')
-					h1.tile-title Alex Haw
-					.tile
-					img.speaker(src='images/speakers/oct2013/alex_haw.jpg')
-				.col-xs-4.column
-					.cover(for='#s234')
-					h1.tile-title Ben Street
-					.tile
-					img.speaker(src='images/speakers/oct2013/ben_street.jpg')
-				.col-xs-4.column
-					.cover(for='#s345')
-					h1.tile-title Irena Bauman
-					.tile
-					img.speaker(src='images/speakers/oct2013/irena_bauman.jpg')
-				.clear
-				.panel-group
-					.collapse.panel-collapse#s123
-						.panel-body
-							p This is a description for speaker 1
-					.collapse.panel-collapse#s234
-						.panel-body
-							p This is a description for speaker 2
-					.collapse.panel-collapse#s345
-						.panel-body
-							p This is a description for speaker 3
-			.session.container-fluid
-				h1.session-date November 2013
-				.col-xs-4.column
-					.cover
-					h1.tile-title Jeremy Till
-					.tile
-					img.speaker(src='images/speakers/nov2013/jeremy_till.jpg')
-				.col-xs-4.column
-					.cover
-					h1.tile-title Nicola Read
-					.tile
-					img.speaker(src='images/speakers/nov2013/nicola_read.jpg')
-				.col-xs-4.column
-					.cover
-					h1.tile-title Jonathan Foyle
-					.tile
-					img.speaker(src='images/speakers/nov2013/jonathan_foyle.jpg')
+			- if (speakersData)
+				- for session in speakersData
+					.session.container-fluid
+						h1.session-date #{session.date}
+						- for speaker in session.speakers
+							.col-xs-4.column
+								.cover(for='##{speaker.id}')
+								h1.tile-title #{speaker.name}
+								.tile
+								img.speaker(src='#{speaker.photo}')
+						.clear
+						.panel-group
+							- for speaker in session.speakers
+								.collapse.panel-collapse(id='#{speaker.id}')
+									.panel-body
+										p #{speaker.description}
 	section.page.venue#venue
 		.venue-header
 			h1.big-text Venue

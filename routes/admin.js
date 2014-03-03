@@ -11,10 +11,14 @@ var admin = function (req, res) {
 	var teamData = fs.readFileSync('./data/team.dat');
 	teamData = JSON.parse(teamData);
 
+	var speakersData = fs.readFileSync('./data/speakers.dat');
+	speakersData = JSON.parse(speakersData);
+
 	res.render('admin', { title: 'Admin',
 		aboutData: aboutData,
 		venueData: venueData,
-		teamData: teamData
+		teamData: teamData,
+		speakersData: speakersData
 	});
 };
 
