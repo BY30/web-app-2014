@@ -22,10 +22,13 @@ var update = function (req, res) {
 			fileData = data.sessions;
 		}
 
-		db.updateContent(data.section, fileData, function (err, data) {
+		db.updateContent(section, fileData, function (err, count) {
 			
-			if (data.length > 0)
+			if (err) console.log(err);
+
+			if (count > 0) {
 				res.end(0);
+			}
 			else {
 
 				db.addContent({
