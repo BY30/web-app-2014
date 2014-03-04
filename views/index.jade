@@ -30,11 +30,12 @@ block content
 			span.medium-text.gray minutes each
 	section.page.about#about
 		.content
-			- for item in aboutData
-				- if (item.type == 'h2')
-					h1.normal #{item.content}
-				- else
-					p #{item.content}
+			- if (aboutData)
+				- for item in aboutData
+					- if (item.type == 'h2')
+						h1.normal #{item.content}
+					- else
+						p #{item.content}
 	section.page.speakers#speakers
 		.speakers-header
 			h1.big-text Speakers
@@ -59,18 +60,20 @@ block content
 		.venue-header
 			h1.big-text Venue
 		.content
-			- for item in venueData
-				- if (item.type == 'h2')
-					h1.normal #{item.content}
-				- else
-					p #{item.content}
+			- if (venueData)
+				- for item in venueData
+					- if (item.type == 'h2')
+						h1.normal #{item.content}
+					- else
+						p #{item.content}
 	section.page.team#team
 		.content
-			- for item in teamData.elements
-				- if (item.type == 'h2')
-					h1.normal #{item.content}
-				- else
-					p #{item.content}
+			- if (teamData)
+				- for item in teamData.elements
+					- if (item.type == 'h2')
+						h1.normal #{item.content}
+					- else
+						p #{item.content}
 			br
 			- if (teamData && teamData.members)
 				- for item in teamData.members

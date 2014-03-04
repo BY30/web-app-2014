@@ -1,22 +1,35 @@
 var fs = require('fs');
 
+var Database = require('../lib/database.js');
+var db = new Database();
+
 exports.index = function(req, res) {
-	var aboutData = fs.readFileSync('./data/about.dat');
-	aboutData = JSON.parse(aboutData);
 
-	var venueData = fs.readFileSync('./data/venue.dat');
-	venueData = JSON.parse(venueData);
+	db.getContent(function (err, data) {
+		if (err) console.log(err);
 
-	var teamData = fs.readFileSync('./data/team.dat');
-	teamData = JSON.parse(teamData);
-	
-	var speakersData = fs.readFileSync('./data/speakers.dat');
-	speakersData = JSON.parse(speakersData);
+		var aboutData;
+		var speakersData;
+		var venueData;
+		var teamData;
 
-	res.render('index', { title: 'BY30',
-		aboutData: aboutData,
-		venueData: venueData,
-		teamData: teamData,
-		speakersData: speakersData
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].section == 'about')
+				aboutData = data[i].data;
+			else if (data[i].section == 'speakers')
+				speakersData = data[i].data;
+			else if (data[i].section == 'venue')
+				venueData = data[i].data;
+			else
+				teamData = data[i].data;
+		};
+
+		res.render('index', { title: 'BY30',
+			aboutData: aboutData,
+			venueData: venueData,
+			teamData: teamData,
+			speakersData: speakersData
+		});
 	});
+
 };
