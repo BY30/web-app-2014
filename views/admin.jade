@@ -24,13 +24,13 @@ html
 							.text-data
 								- if (aboutData)
 									- for item in aboutData
-										.editable-group
+										.editable-group.movable
 											- if (item.type == 'h2')
 												h2.heading.editable(contenteditable) #{item.content}
-												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 											- else
 												p.content.editable(contenteditable) #{item.content}
-												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+											span.glyphicon.glyphicon-move.pull-left.move-button
+											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 						.section-controls(for='#about-section-edit')
 							.btn.btn-default.editable-section-control.btn-add-heading
 								span.glyphicon.glyphicon-plus
@@ -55,7 +55,7 @@ html
 							.list-data
 								- if (speakersData)
 									- for item in speakersData
-										.session-data.editable-group
+										.session-data.editable-group.movable.direct-editable
 											.session-info.centre
 												.editable-group
 													h2.heading.editable.centre(contenteditable) #{item.date}
@@ -69,6 +69,7 @@ html
 															.editable-group
 																h2.heading.editable(contenteditable) #{spkr.name}
 																p.content.editable(contenteditable) #{spkr.description}
+											span.glyphicon.glyphicon-move.pull-left.move-button
 											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 							- if (!speakersData)
 								.centre-container.empty-list-warning: i No speakers added yet
@@ -93,13 +94,13 @@ html
 							.text-data
 								- if (venueData)
 									- for item in venueData
-										.editable-group
+										.editable-group.movable
 											- if (item.type == 'h2')
 												h2.heading.editable(contenteditable) #{item.content}
-												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 											- else
 												p.content.editable(contenteditable) #{item.content}
-												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+											span.glyphicon.glyphicon-move.pull-left.move-button
+											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button													
 						.section-controls(for='#venue-section-edit')
 							.btn.btn-default.editable-section-control.btn-add-heading
 								span.glyphicon.glyphicon-plus
@@ -124,18 +125,18 @@ html
 							.text-data
 								- if (teamData && teamData.elements)
 									- for item in teamData.elements
-										.editable-group
+										.editable-group.movable
 											- if (item.type == 'h2')
 												h2.heading.editable(contenteditable) #{item.content}
-												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 											- else
 												p.content.editable(contenteditable) #{item.content}
-												span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
+											span.glyphicon.glyphicon-move.pull-left.move-button
+											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 							hr
 							.list-data
 								- if (teamData && teamData.members)
 									- for item in teamData.members
-										.team-member-data.editable-group(id='#{item.id}')
+										.team-member-data.editable-group.movable.direct-editable(id='#{item.id}')
 											.member-photo
 												input(type='file', name='member-photo').hidden.photo-input
 												img.preview.btn-add-photo(src='#{item.photo}', for='##{item.id}')
@@ -143,6 +144,7 @@ html
 												.editable-group
 													h2.heading.editable(contenteditable) #{item.name}
 													p.content.editable(contenteditable) #{item.description}
+											span.glyphicon.glyphicon-move.pull-left.move-button
 											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 								- if (!teamData || !teamData.members)
 									.centre-container.empty-list-warning: i No team members added yet
@@ -160,6 +162,7 @@ html
 								span.glyphicon.glyphicon-save.btn-icon
 								span.btn-content Save
 
-	script(src='/javascripts/jquery.js')
-	script(src='/javascripts/bootstrap.min.js')
-	script(src='/javascripts/admin/main.js')
+		script(src='/javascripts/jquery.js')
+		script(src='/javascripts/bootstrap.min.js')
+		script(src='/javascripts/admin/main.js')
+		script(src='/javascripts/admin/dragdrop.js')

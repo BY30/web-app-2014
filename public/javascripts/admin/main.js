@@ -22,8 +22,15 @@ var generateEditableGroup = function (type) {
 	removeButton.classList.add('pull-right');
 	removeButton.classList.add('remove-button');
 
+	var moveButton = document.createElement('span');
+	moveButton.classList.add('glyphicon');
+	moveButton.classList.add('glyphicon-move');
+	moveButton.classList.add('pull-right');
+	moveButton.classList.add('move-button');
+
 	editableGroup.appendChild(editableElement);
 	editableGroup.appendChild(removeButton);
+	editableGroup.appendChild(moveButton);
 
 	return editableGroup;
 };
@@ -32,6 +39,8 @@ var generateTeamMemberGroup = function () {
 	var teamMemberData = document.createElement('div');
 	teamMemberData.classList.add('team-member-data');
 	teamMemberData.classList.add('editable-group');
+	teamMemberData.classList.add('direct-editable');
+	teamMemberData.classList.add('movable');
 	teamMemberData.id = 'm' + Date.now();
 
 	var memberInfo = document.createElement('div');
@@ -76,6 +85,12 @@ var generateTeamMemberGroup = function () {
 	removeButton.classList.add('pull-right');
 	removeButton.classList.add('remove-button');
 
+	var moveButton = document.createElement('span');
+	moveButton.classList.add('glyphicon');
+	moveButton.classList.add('glyphicon-move');
+	moveButton.classList.add('pull-right');
+	moveButton.classList.add('move-button');
+
 	editableGroup.appendChild(memberHeading);
 	editableGroup.appendChild(memberContent);
 
@@ -84,6 +99,7 @@ var generateTeamMemberGroup = function () {
 	teamMemberData.appendChild(memberPhoto);
 	teamMemberData.appendChild(memberInfo);
 	teamMemberData.appendChild(removeButton);
+	teamMemberData.appendChild(moveButton);
 
 	return teamMemberData;
 };
@@ -145,6 +161,8 @@ var generateSessionElement = function () {
 	var sessionData = document.createElement('div');
 	sessionData.classList.add('session-data');
 	sessionData.classList.add('editable-group');
+	sessionData.classList.add('movable');
+	sessionData.classList.add('direct-editable');
 
 	var sessionInfo = document.createElement('div');
 	sessionInfo.classList.add('session-info');
@@ -172,6 +190,12 @@ var generateSessionElement = function () {
 	removeButton.classList.add('pull-right');
 	removeButton.classList.add('remove-button');
 
+	var moveButton = document.createElement('span');
+	moveButton.classList.add('glyphicon');
+	moveButton.classList.add('glyphicon-move');
+	moveButton.classList.add('pull-right');
+	moveButton.classList.add('move-button');
+
 	editableGroup.appendChild(sessionHeading);
 
 	sessionInfo.appendChild(editableGroup);
@@ -183,6 +207,7 @@ var generateSessionElement = function () {
 	sessionData.appendChild(sessionInfo);
 	sessionData.appendChild(sessionList);
 	sessionData.appendChild(removeButton);
+	sessionData.appendChild(moveButton);
 
 	return sessionData;
 };
