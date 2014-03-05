@@ -1,3 +1,5 @@
+var count = 0;
+
 var generateEditableGroup = function (type) {
 	var editableGroup = document.createElement('div');
 	editableGroup.classList.add('editable-group');
@@ -41,7 +43,7 @@ var generateTeamMemberGroup = function () {
 	teamMemberData.classList.add('editable-group');
 	teamMemberData.classList.add('direct-editable');
 	teamMemberData.classList.add('movable');
-	teamMemberData.id = 'm' + Date.now();
+	teamMemberData.id = 'm' + (Date.now() + ++count);
 
 	var memberInfo = document.createElement('div');
 	memberInfo.classList.add('member-info');
@@ -108,7 +110,7 @@ var generateSpeakerElement = function () {
 	
 	var speakerData = document.createElement('div');
 	speakerData.classList.add('speaker-data');
-	speakerData.id = 's' + Date.now();
+	speakerData.id = 's' + (Date.now() + ++count);
 
 	var speakerInfo = document.createElement('div');
 	speakerInfo.classList.add('speaker-info');

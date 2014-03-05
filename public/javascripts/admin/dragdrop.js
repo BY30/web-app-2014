@@ -4,25 +4,28 @@ var state = 0;
 
 $(document).on('mousedown', '.move-button', function (e) {
 
-	target = this.parentNode;
-	clone = target.cloneNode(true);
+	if (e.button == 0) {
+		target = this.parentNode;
+		clone = target.cloneNode(true);
 
-	this.parentNode.parentNode.appendChild(clone);
-	var initialWidth = $(clone).width();
+		this.parentNode.parentNode.appendChild(clone);
+		var initialWidth = $(clone).width();
 
-	clone.style.top = e.clientY + 'px';
-	clone.style.left = e.clientX + 'px';
-	clone.style.width = initialWidth + 'px';
-	clone.style.position = 'fixed';
-	clone.classList.add('moving');
+		clone.style.top = e.clientY + 'px';
+		clone.style.left = e.clientX + 'px';
+		clone.style.width = initialWidth + 'px';
+		clone.style.position = 'fixed';
+		clone.classList.add('moving');
 
-	target.classList.add('move-target');
+		target.classList.add('move-target');
 
 
-	state = 1;
+		state = 1;
 
-	$('.editable').removeAttr('contenteditable');
-	$('body').css('user-select', 'none');
+		$('.editable').removeAttr('contenteditable');
+		$('#speakers-section-edit .session-list').hide();
+		$('body').css('user-select', 'none');
+	}
 });
 
 $(document).on('mouseup', function (e) {
@@ -36,6 +39,7 @@ $(document).on('mouseup', function (e) {
 		clone.classList.remove('moving');
 		target.classList.remove('move-target');
 		clone.remove();
+		$('#speakers-section-edit .session-list').show();
 		$('body').css('user-select', 'text');
 	}
 });
@@ -65,5 +69,14 @@ $(document).on('mousemove', function (e) {
 			else
 				$(target).insertAfter(selected);
 		}
+	}
+});
+
+$(document).on('mousedown', function (e) {
+	console.log('da');
+	if (e.button == 2) {
+		$('.context-menu').offset(e.clientX, e.clientY);
+		$('.context-menu > ul.dropdown-menu').show();
+		e.preventDefault();
 	}
 });

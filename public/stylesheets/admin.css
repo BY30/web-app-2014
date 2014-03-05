@@ -67,6 +67,14 @@ body {
 	margin: 0 2px;
 }
 
+.context-menu {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: auto;
+	height: auto;
+}
+
 span.glyphicon.remove-button {
 	position: absolute;
 	font-size: 25px;
