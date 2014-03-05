@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 var Database = require('../lib/database.js');
 var db = new Database();
 
