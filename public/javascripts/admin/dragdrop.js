@@ -2,6 +2,13 @@ var target = null;
 var clone = null;
 var state = 0;
 
+var selection = null;
+
+var getSelection = function (e) {
+	var result = (document.all) ? document.selection.createRange().text : document.getSelection();
+	return result;
+};
+
 $(document).on('mousedown', '.move-button', function (e) {
 
 	if (e.button == 0) {
@@ -72,11 +79,67 @@ $(document).on('mousemove', function (e) {
 	}
 });
 
-$(document).on('mousedown', function (e) {
-	console.log('da');
-	if (e.button == 2) {
-		$('.context-menu').offset(e.clientX, e.clientY);
-		$('.context-menu > ul.dropdown-menu').show();
-		e.preventDefault();
+$(document).on('click', '*', function (e) {
+	if (selection == null || selection.anchorOffset - selection.focusOffset == 0) {
+			
+
 	}
+});
+
+$(document).on('mouseup, click', '.editable', function (e) {
+	if (e.button == 0) {
+
+		var _selection = getSelection(e);
+
+		if (_selection.type != 'Range' || _selection.anchorOffset - _selection.focusOffset == 0) {
+			
+			$('#edit-context-menu').css({
+				display: 'none'
+			});
+			
+			selection = null;
+
+		} else {
+			
+			if (_selection.type == 'Range')
+				selection = jQuery.extend(true, {}, _selection);
+			
+			console.log(selection);
+			
+			var popoverHeight = $('#edit-context-menu').height() + 31;
+			var popoverMid = $('#edit-context-menu').width() / 2;
+			
+			$('#edit-context-menu').css({
+				top: e.pageY - popoverHeight,
+				left: e.pageX - popoverMid,
+				display: 'block'
+			});
+		}
+
+	} else {
+		$('#edit-context-menu').css({
+			display: 'none'
+		});
+	}
+});
+
+$(document).on('click', '.btn-insert-link', function (e) {
+	var linkAddress = prompt('Please provide the link address:', 'http://www.example.com');
+	
+	var element = selection.anchorNode.parentElement;
+
+	if (element) {
+		var text = element.innerHTML;
+		var lower = Math.min(selection.anchorOffset, selection.focusOffset);
+		var upper = Math.max(selection.anchorOffset, selection.focusOffset);
+		var originalSelection = text.substring(lower, upper);
+
+		originalSelection = '<a href="' + linkAddress + '">' + originalSelection + '</a>';
+
+		text = text.substring(0, lower) + originalSelection + text.substring(upper, text.length);
+
+		element.innerHTML = text;
+	}
+	
+	e.preventDefault();
 });

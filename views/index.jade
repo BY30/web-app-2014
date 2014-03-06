@@ -33,9 +33,9 @@ block content
 			- if (aboutData)
 				- for item in aboutData
 					- if (item.type == 'h2')
-						h1.normal #{item.content}
+						h1.normal!= item.content
 					- else
-						p #{item.content}
+						p!= item.content
 	section.page.speakers#speakers
 		.speakers-header
 			h1.big-text Speakers
@@ -55,7 +55,7 @@ block content
 							- for speaker in session.speakers
 								.collapse.panel-collapse(id='#{speaker.id}')
 									.panel-body
-										p #{speaker.description}
+										p!= speaker.description
 	section.page.venue#venue
 		.venue-header
 			h1.big-text Venue
@@ -63,17 +63,17 @@ block content
 			- if (venueData)
 				- for item in venueData
 					- if (item.type == 'h2')
-						h1.normal #{item.content}
+						h1.normal!= item.content
 					- else
-						p #{item.content}
+						p!= item.content
 	section.page.team#team
 		.content
 			- if (teamData)
 				- for item in teamData.elements
 					- if (item.type == 'h2')
-						h1.normal #{item.content}
+						h1.normal!= item.content
 					- else
-						p #{item.content}
+						p!= item.content
 			br
 			- if (teamData && teamData.members)
 				- for item in teamData.members
@@ -81,8 +81,8 @@ block content
 						.member-photo
 							img.preview.btn-add-photo(src='#{item.photo}', for='##{item.id}')
 						.member-info
-								h2.heading #{item.name}
-								p.content #{item.description}
+								h2.heading!= item.name
+								p.content!= item.description
 	section.page.contact#contact
 		.content
 			h1.normal Contact Us

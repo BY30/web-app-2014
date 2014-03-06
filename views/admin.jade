@@ -26,9 +26,9 @@ html
 									- for item in aboutData
 										.editable-group.movable
 											- if (item.type == 'h2')
-												h2.heading.editable(contenteditable) #{item.content}
+												h2.heading.editable(contenteditable)!= item.content
 											- else
-												p.content.editable(contenteditable) #{item.content}
+												p.content.editable(contenteditable)!= item.content
 											span.glyphicon.glyphicon-move.pull-left.move-button
 											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 						.section-controls(for='#about-section-edit')
@@ -96,9 +96,9 @@ html
 									- for item in venueData
 										.editable-group.movable
 											- if (item.type == 'h2')
-												h2.heading.editable(contenteditable) #{item.content}
+												h2.heading.editable(contenteditable)!= item.content
 											- else
-												p.content.editable(contenteditable) #{item.content}
+												p.content.editable(contenteditable)!= item.content
 											span.glyphicon.glyphicon-move.pull-left.move-button
 											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button													
 						.section-controls(for='#venue-section-edit')
@@ -127,9 +127,9 @@ html
 									- for item in teamData.elements
 										.editable-group.movable
 											- if (item.type == 'h2')
-												h2.heading.editable(contenteditable) #{item.content}
+												h2.heading.editable(contenteditable)!= item.content
 											- else
-												p.content.editable(contenteditable) #{item.content}
+												p.content.editable(contenteditable)!= item.content
 											span.glyphicon.glyphicon-move.pull-left.move-button
 											span.glyphicon.glyphicon-remove-circle.pull-right.remove-button
 							hr
@@ -161,10 +161,10 @@ html
 							.btn.btn-success.editable-section-control.btn-save.pull-right
 								span.glyphicon.glyphicon-save.btn-icon
 								span.btn-content Save
-		.context-menu#edit-context-menu
-			ul.dropdown-menu
-				li: a(href='#') Insert Link
-				li: a(href='#') Delete Paragraph
+		.context-menu.popover.top#edit-context-menu(data-placement='top')
+			.arrow
+			.popover-content
+				span.glyphicon.glyphicon-link.btn-insert-link
 		script(src='/javascripts/jquery.js')
 		script(src='/javascripts/bootstrap.min.js')
 		script(src='/javascripts/admin/main.js')

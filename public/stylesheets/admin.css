@@ -68,11 +68,12 @@ body {
 }
 
 .context-menu {
-	position: fixed;
+	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: auto;
 	height: auto;
+	margin: 0px !important;
 }
 
 span.glyphicon.remove-button {
@@ -92,6 +93,10 @@ span.glyphicon.move-button {
 	left: -7px;
 	display: none;
 	color: #5bc0de;
+	cursor: pointer;
+}
+
+span.btn-insert-link {
 	cursor: pointer;
 }
 
