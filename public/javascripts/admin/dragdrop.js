@@ -104,7 +104,7 @@ $(document).on('mouseup, click', '.editable', function (e) {
 			if (_selection.type == 'Range')
 				selection = jQuery.extend(true, {}, _selection);
 			
-			console.log(selection);
+			// console.log(selection);
 			
 			var popoverHeight = $('#edit-context-menu').height() + 31;
 			var popoverMid = $('#edit-context-menu').width() / 2;
@@ -128,15 +128,26 @@ $(document).on('click', '.btn-insert-link', function (e) {
 	
 	var element = selection.anchorNode.parentElement;
 
+	console.log(element);
+
 	if (element) {
 		var text = element.innerHTML;
-		var lower = Math.min(selection.anchorOffset, selection.focusOffset);
-		var upper = Math.max(selection.anchorOffset, selection.focusOffset);
+
+		var offset = text.indexOf(selection.anchorNode.textContent);
+		if (offset < 0) offset = 0;
+		
+		// console.log(offset);
+
+		var lower = Math.min(selection.anchorOffset, selection.focusOffset) + offset;
+		var upper = Math.max(selection.anchorOffset, selection.focusOffset) + offset;
+		
 		var originalSelection = text.substring(lower, upper);
 
 		originalSelection = '<a href="' + linkAddress + '">' + originalSelection + '</a>';
 
 		text = text.substring(0, lower) + originalSelection + text.substring(upper, text.length);
+
+		// console.log(originalSelection);
 
 		element.innerHTML = text;
 	}

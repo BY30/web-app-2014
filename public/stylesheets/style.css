@@ -521,9 +521,10 @@ p.copyright {
 	font-family: "Helvetica Special";
 	position: relative;
 	display: inline-block;
-	width: 100%;
+	width: 25%;
 	clear: both;
 	padding: 10px;
+	text-align: center;
 }
 
 .team-member-data > * {
