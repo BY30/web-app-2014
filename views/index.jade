@@ -45,9 +45,12 @@ block content
 					.session.container-fluid
 						h1.session-date #{session.date}
 						- for speaker in session.speakers
+							- var speakerName = speaker.name
+							- if (speakerName.length > 8)
+								- speakerName = speakerName.replace(/\ /g, '<br />')
 							.col-xs-4.column
 								.cover(for='##{speaker.id}')
-								h1.tile-title #{speaker.name}
+								h1.tile-title!= speakerName
 								.tile
 								img.speaker(src='#{speaker.photo}')
 						.clear
