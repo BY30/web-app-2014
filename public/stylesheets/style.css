@@ -532,10 +532,12 @@ p.copyright {
 	/*float: left;*/
 }
 
-.team-member-data p {
+.team-member-data .member-info p {
 	font-size: 20px;
 	padding: 0px;
 	margin: 0px;
+	min-height: 28px;
+	display: inline-block;
 }
 
 img.preview {
@@ -560,13 +562,12 @@ img.preview {
 .team-member-data .member-photo {
 	position: relative;
 	/*float: left;*/
-	margin-right: 20px;
+	/*margin-right: 20px;*/
 }
 
 .team-member-data .member-info .heading,
 .team-member-data .member-info .content {
-	margin: 0px;
-	/*padding: 0px 10px 5px 10px;*/
+	margin-bottom: -10px;
 }
 
 .panel-collapse {
