@@ -13,3 +13,6 @@ results
 
 npm-debug.log
 node_modules
+public/images/team
+public/images/speakers
+public/images/speakers/*/
