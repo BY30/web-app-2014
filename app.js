@@ -17,6 +17,8 @@ routes.contact = require('./routes/contact');
 routes.login = require('./routes/login');
 routes.logout = require('./routes/logout');
 
+app.set('ip', process.env.IP || '127.0.0.1');
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +48,6 @@ app.post('/update', routes.update);
 app.post('/contact', routes.contact);
 app.post('/login', routes.login);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
