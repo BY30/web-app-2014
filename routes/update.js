@@ -35,7 +35,7 @@ var update = function (req, res) {
 					fs.mkdirSync('public/images/speakers/' + sessionName);
 				for (var j = fileData[i].speakers.length - 1; j >= 0; j--) {
 					// fileData[i].speakers[j]
-					if (fileData[i].speakers[i].photo.search('base64') < 0) continue;
+					if (fileData[i].speakers[i].photo && fileData[i].speakers[i].photo.search('base64') < 0) continue;
 					var buff = new Buffer(fileData[i].speakers[j].photo.split(',')[1], 'base64');
 					fs.writeFileSync('public/images/speakers/' + sessionName + fileData[i].speakers[j].id + '.jpg', buff);
 					fileData[i].speakers[j].photo = '/images/speakers/' + sessionName + fileData[i].speakers[j].id + '.jpg';
